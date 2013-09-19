@@ -8,19 +8,21 @@ using Jypeli.Widgets;
 
 public class pong : PhysicsGame
 {
+    Vector nopeusYlos = new Vector(0, 200);
+    Vector nopeusAlas = new Vector(0, -200);
+    
     PhysicsObject pallo;
+    PhysicsObject maila1;
+    PhysicsObject maila2;
+        
     public override void Begin()
     {
         LuoKentta();
-        AloitaPeli();
-        AloitaPeli();
-
-        Keyboard.Listen(Key.Escape, ButtonState.Pressed, ConfirmExit, "Lopeta peli");
-
-        Vector impulssi = new Vector(500.0, 0.0);
-        pallo.Hit(impulssi);
+        AsetaOhjaimet();
+        AloitaPeli();       
 
         // TODO: Kirjoita ohjelmakoodisi tähän
+       
     }
 
     void LuoKentta()
@@ -32,8 +34,8 @@ public class pong : PhysicsGame
         pallo.Restitution = 1.0;
         Add(pallo);
 
-        LuoMaila(Level.Left + 20.0, 0.0);
-        LuoMaila(Level.Right - 20.0, 0.0);
+        maila1 = LuoMaila(Level.Left + 20.0, 0.0);
+        maila2 = LuoMaila(Level.Right - 20.0, 0.0);
 
         Level.CreateBorders(1.0, false);
         Level.BackgroundColor = Color.Black;
@@ -46,21 +48,35 @@ public class pong : PhysicsGame
         Vector impulssi = new Vector(500.0, 0.0);
         pallo.Hit(impulssi);
     }
-    void LuoMaila(double x, double y)
+    PhysicsObject LuoMaila(double x, double y)
     {
-         PhysicsObject maila = PhysicsObject.CreateStaticObject(20.0, 100.0); 
-         maila.Shape = Shape.Rectangle;
-         maila.X = x;
-         maila.Y = y;
-         maila.Restitution = 1.0;
-         Add(maila); 
+        PhysicsObject maila = PhysicsObject.CreateStaticObject(20.0, 100.0);
+        maila.Shape = Shape.Rectangle;
+        maila.X = x;
+        maila.Y = y;
+        maila.Restitution = 1.0;
+        Add(maila);
+        return maila;
+    }
+    void AsetaOhjaimet() 
+    {
+        Keyboard.Listen(Key.A, ButtonState.Down, AsetaNopeus, "Pelaaja 1: Liikuta mailaa ylös", maila1, nopeusYlos);
+        Keyboard.Listen(Key.A, ButtonState.Released, AsetaNopeus, null, maila1, Vector.Zero);
+        Keyboard.Listen(Key.Z, ButtonState.Down, AsetaNopeus, "Pelaaja 1: Liikuta mailaa alas", maila1, nopeusAlas);    
+        Keyboard.Listen(Key.Z, ButtonState.Released, AsetaNopeus, null, maila1, Vector.Zero); 
+    
+        Keyboard.Listen(Key.Up, ButtonState.Down, AsetaNopeus, "Pelaaja 2: Liikuta mailaa ylös", maila2, nopeusYlos);
+        Keyboard.Listen(Key.Up, ButtonState.Released, AsetaNopeus, null, maila2, Vector.Zero);
+        Keyboard.Listen(Key.Down, ButtonState.Down, AsetaNopeus, "pelaaja 2: Liikuta mailaa alas", maila2, nopeusAlas);
+        Keyboard.Listen(Key.Down, ButtonState.Released, AsetaNopeus, null, maila2, Vector.Zero); 
 
-   void AsetaOhjaimet() 
-   }
-      Keyboard.Listen(Key.A, ButtonState.Down, LiikutaMaila1Ylös, "Pelaaja 1: Liikuta mailaa ylös");
-      Keyboard.Listen(Key.A, ButtonState.Released, PysaytaMaila1, null);
+        Keyboard.Listen(Key.F1, ButtonState.Pressed, ShowControlHelp, "näytä ohjeet");
+        Keyboard.Listen(Key.Escape, ButtonState.Pressed, ConfirmExit, "Lopeta peli");
+    }
 
-      Keyboard.Listen(Key.Escape, ButtonState.Pressed, ConfirmExit, "Lopeta peli");   
-} 
-
+    void AsetaNopeus(PhysicsObject maila, Vector nopeus)
+    {
+        maila.Velocity = nopeus;
+    }
+}
 
