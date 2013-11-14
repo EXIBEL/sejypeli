@@ -59,8 +59,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="vihollinene.png">
-      <Name>vihollinene</Name>
+    <Compile Include="vihollinen.png">
+      <Name>vihollinen</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
