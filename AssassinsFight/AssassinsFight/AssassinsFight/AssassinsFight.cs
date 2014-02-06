@@ -11,20 +11,22 @@ public class AssassinsFight : PhysicsGame
     PlatformCharacter Ukko;
     Image paaukko = LoadImage("paaukko");
     PlatformCharacter vihollinen;
-  
+    
     public override void Begin()
     {
 
 
         Luokentta();
 
-        Gravity = new Vector(0, -100);
+        Gravity = new Vector(0, -1000);
         PhoneBackButton.Listen(ConfirmExit, "Lopeta peli");
         Keyboard.Listen(Key.Escape, ButtonState.Pressed, ConfirmExit, "Lopeta peli");
         Keyboard.Listen(Key.D, ButtonState.Down, Liikuta, "oikealle", Direction.Right);
         Keyboard.Listen(Key.A, ButtonState.Down, Liikuta, "vasemmalle", Direction.Left);
         Keyboard.Listen(Key.W, ButtonState.Pressed, Hyppaa, "ylös");
         Keyboard.Listen(Key.S, ButtonState.Pressed, Liikuta, "alas", Direction.Down);
+        Level.Background.Image = LoadImage("taustakuva");
+        Level.Background.FitToLevel();
     }
     void Hyppaa()
     {

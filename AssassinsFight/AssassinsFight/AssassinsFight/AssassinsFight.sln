@@ -1,0 +1,24 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual C# Express 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssassinsFight", "AssassinsFight.csproj", "{B6B1FCF2-D23E-40F0-9BCA-E9E824A33B85}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssassinsFightContent", "..\AssassinsFightContent\AssassinsFightContent.contentproj", "{23845516-5275-4D09-923C-B276E6F74A66}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B6B1FCF2-D23E-40F0-9BCA-E9E824A33B85}.Debug|x86.ActiveCfg = Debug|x86
+		{B6B1FCF2-D23E-40F0-9BCA-E9E824A33B85}.Debug|x86.Build.0 = Debug|x86
+		{B6B1FCF2-D23E-40F0-9BCA-E9E824A33B85}.Release|x86.ActiveCfg = Release|x86
+		{B6B1FCF2-D23E-40F0-9BCA-E9E824A33B85}.Release|x86.Build.0 = Release|x86
+		{23845516-5275-4D09-923C-B276E6F74A66}.Debug|x86.ActiveCfg = Debug|x86
+		{23845516-5275-4D09-923C-B276E6F74A66}.Release|x86.ActiveCfg = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

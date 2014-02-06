@@ -9,7 +9,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyProduct("Tasohyppelypeli1")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyCompany("Seinäjoen kaupunki")]
-[assembly: AssemblyCopyright("Copyright © Seinäjoen kaupunki 2013")]
+[assembly: AssemblyCopyright("Copyright © Seinäjoen kaupunki 2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -22,7 +22,7 @@ using System.Runtime.InteropServices;
 // On Windows, the following GUID is for the ID of the typelib if this
 // project is exposed to COM. On other platforms, it unique identifies the
 // title storage container when deploying this assembly to the device.
-[assembly: Guid("81fffca9-017c-48d0-ade4-d09b62bff520")]
+[assembly: Guid("dc19b2ed-5e95-4c15-afab-61ab6ec63b4d")]
 
 // Version information for an assembly consists of the following four values:
 //
