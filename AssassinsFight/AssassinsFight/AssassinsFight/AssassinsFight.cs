@@ -15,7 +15,7 @@ public class AssassinsFight : PhysicsGame
     public override void Begin()
     {
 
-
+        AssaultRifle ukonase;
         Luokentta();
 
         Gravity = new Vector(0, -1000);
@@ -25,12 +25,14 @@ public class AssassinsFight : PhysicsGame
         Keyboard.Listen(Key.A, ButtonState.Down, Liikuta, "vasemmalle", Direction.Left);
         Keyboard.Listen(Key.W, ButtonState.Pressed, Hyppaa, "ylös");
         Keyboard.Listen(Key.S, ButtonState.Pressed, Liikuta, "alas", Direction.Down);
+        Keyboard.Listen(Key.Space, ButtonState.Down, AmmuAseella, "Ammu", Ukko);
+
         Level.Background.Image = LoadImage("taustakuva");
         Level.Background.FitToLevel();
     }
     void Hyppaa()
     {
-        Ukko.Jump(500);
+        Ukko.Jump(600);
     }
     void Luokentta()
     {
@@ -53,6 +55,10 @@ public class AssassinsFight : PhysicsGame
         Ukko.Position = paikka;
         Ukko.Color = Color.FromHexCode("0094FF");
         Ukko.Image = LoadImage("paaukko");
+        
+        Ukko.Weapon = new AssaultRifle(30, 10);
+        Ukko.Weapon.Ammo.Value =1000;
+        
         
         Add(Ukko);
         Camera.Follow(Ukko);
@@ -104,6 +110,18 @@ public class AssassinsFight : PhysicsGame
         }
         //Ukko.Velocity = new Vector(500, 0);
 
+    }
+
+    void AmmuAseella(PlatformCharacter pelaaja)
+    {
+        PhysicsObject ammus = Ukko.Weapon.Shoot();
+
+        if (ammus != null)
+        {
+            ammus.Size *= 1000;
+            ammus.Image = LoadImage ("Luoti");
+            //ammus.MaximumLifetime = TimeSpan.FromSeconds(2.0);
+        }
     }
 
 }
