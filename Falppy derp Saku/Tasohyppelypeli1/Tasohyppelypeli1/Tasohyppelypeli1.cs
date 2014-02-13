@@ -10,18 +10,21 @@ public class Tasohyppelypeli1 : PhysicsGame
 {
     const double nopeus = 200;
     const double hyppyNopeus = 750;
+    PlatformCharacter Saku;
 
-    Image taustaKuva = LoadImage("taustaKuva");
-    PlatformCharacter Saku; 
+    public override void Begin()
+    {
+        Image GameThumbnail = LoadImage("GameThumbnail");
+        Image pelaajanKuva = LoadImage("Saku");
+        Saku = new PlatformCharacter(1000, 1000);
+        Saku.Image = pelaajanKuva;
+        Add(Saku);
+
+        LisaaNappaimet();
+     Level.Background.Image = GameThumbnail;
     
-    
-    Image pelaajanKuva = LoadImage("Saku");
+    }
 
-
-
-
-    
-   
 
     void LisaaNappaimet()
     {
@@ -48,13 +51,15 @@ public class Tasohyppelypeli1 : PhysicsGame
     {
      
     }
-    void LuoKenttaHa()
-    {
-        Level.Background.Image = taustaKuva;
-    }
-    LuoSaku(); 
-    {
+   
+    
+       
+    
+
+
+    
+
 
     }
 
-}    
+    

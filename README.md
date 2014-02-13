@@ -1,4 +1,5 @@
-sejypeli
+﻿sejypeli
 ========
 
 Seinäjoen kansalais opiston pelikurssi säiliö,Biatch!
+a HUOMIO OEPTTAJA! SAKU KIRJOILI! SAKU KIRJOILEE LASTEN KUULLESSA SAKU ON SAKU JA HÄNTÄ TÄYTYY VAROA. JA SE EI OKLE SEJYPELIN KANSIO BIATCH'
