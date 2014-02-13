@@ -1,0 +1,24 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual C# Express 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tasohyppelypeli1", "Tasohyppelypeli1\Tasohyppelypeli1\Tasohyppelypeli1.csproj", "{1A1BCEC2-EB52-4224-846D-6463E46518C8}"
+EndProject
+Project("{96E2B04D-8817-42C6-938A-82C39BA4D311}") = "Tasohyppelypeli1Content", "Tasohyppelypeli1\Tasohyppelypeli1Content\Tasohyppelypeli1Content.contentproj", "{F6C1E163-CDF7-46AE-B7FC-655B55B4031A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1A1BCEC2-EB52-4224-846D-6463E46518C8}.Debug|x86.ActiveCfg = Debug|x86
+		{1A1BCEC2-EB52-4224-846D-6463E46518C8}.Debug|x86.Build.0 = Debug|x86
+		{1A1BCEC2-EB52-4224-846D-6463E46518C8}.Release|x86.ActiveCfg = Release|x86
+		{1A1BCEC2-EB52-4224-846D-6463E46518C8}.Release|x86.Build.0 = Release|x86
+		{F6C1E163-CDF7-46AE-B7FC-655B55B4031A}.Debug|x86.ActiveCfg = Debug|x86
+		{F6C1E163-CDF7-46AE-B7FC-655B55B4031A}.Release|x86.ActiveCfg = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
