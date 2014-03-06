@@ -45,8 +45,8 @@
     <Reference Include="AnimationExtension" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GameThumbnail.png">
-      <Name>GameThumbnail</Name>
+    <Compile Include="Kentta.png">
+      <Name>Kentta</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>

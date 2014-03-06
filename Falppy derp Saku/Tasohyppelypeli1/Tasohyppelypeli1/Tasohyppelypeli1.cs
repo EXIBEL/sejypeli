@@ -10,36 +10,31 @@ public class Tasohyppelypeli1 : PhysicsGame
 {
     const double nopeus = 200;
     const double hyppyNopeus = 750;
-    PlatformCharacter Saku;
+    Image Kentta;
+    //PlatformCharacter Saku; 
+    
+    
+    Image pelaajanKuva = LoadImage("Saku");
 
     public override void Begin()
     {
-        Image GameThumbnail = LoadImage("GameThumbnail");
-        Image pelaajanKuva = LoadImage("Saku");
-        Saku = new PlatformCharacter(1000, 1000);
-        Saku.Image = pelaajanKuva;
-        Add(Saku);
-
         LisaaNappaimet();
-     Level.Background.Image = GameThumbnail;
-    
+        LuoKenttaHa();
     }
-
-
     void LisaaNappaimet()
     {
         Keyboard.Listen(Key.F1, ButtonState.Pressed, ShowControlHelp, "Näytä ohjeet");
         Keyboard.Listen(Key.Escape, ButtonState.Pressed, ConfirmExit, "lolo");
 
-        Keyboard.Listen(Key.Left, ButtonState.Down, Liikuta, "Liikkuu vasemmalle", Saku, -nopeus);
-        Keyboard.Listen(Key.Right, ButtonState.Down, Liikuta, "Liikkuu vasemmalle", Saku, nopeus);
-        Keyboard.Listen(Key.Up, ButtonState.Pressed, Hyppaa, "Pelaaja hyppää", Saku, hyppyNopeus);
+        //Keyboard.Listen(Key.Left, ButtonState.Down, Liikuta, "Liikkuu vasemmalle", Saku, -nopeus);
+        //Keyboard.Listen(Key.Right, ButtonState.Down, Liikuta, "Liikkuu vasemmalle", Saku, nopeus);
+        //Keyboard.Listen(Key.Up, ButtonState.Pressed, Hyppaa, "Pelaaja hyppää", Saku, hyppyNopeus);
 
         ControllerOne.Listen(Button.Back, ButtonState.Pressed, Exit, "Poistu pelistä");
 
-        ControllerOne.Listen(Button.DPadLeft, ButtonState.Down, Liikuta, "Pelaaja liikkuu vasemmalle", Saku, -nopeus);
-        ControllerOne.Listen(Button.DPadRight, ButtonState.Down, Liikuta, "Pelaaja liikkuu oikealle", Saku, nopeus);
-        ControllerOne.Listen(Button.A, ButtonState.Pressed, Hyppaa, "Pelaaja hyppää", Saku, hyppyNopeus);
+        //ControllerOne.Listen(Button.DPadLeft, ButtonState.Down, Liikuta, "Pelaaja liikkuu vasemmalle", Saku, -nopeus);
+        //ControllerOne.Listen(Button.DPadRight, ButtonState.Down, Liikuta, "Pelaaja liikkuu oikealle", Saku, nopeus);
+        //ControllerOne.Listen(Button.A, ButtonState.Pressed, Hyppaa, "Pelaaja hyppää", Saku, hyppyNopeus);
 
         PhoneBackButton.Listen(ConfirmExit, "Lopeta peli");
     }
@@ -51,15 +46,12 @@ public class Tasohyppelypeli1 : PhysicsGame
     {
      
     }
-   
-    
-       
-    
+    void LuoKenttaHa()
+    {
+        Kentta = LoadImage("Kentta");
+        Level.Background.Image = Kentta;
+        Camera.Zoom(1.70);
+        
+     }
 
-
-    
-
-
-    }
-
-    
+}    
