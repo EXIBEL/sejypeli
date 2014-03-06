@@ -26,34 +26,25 @@ public class Tasohyppelypeli1 : PhysicsGame
 
     void LuoLintu()
     {
-       Lintu = new PhysicsObject(50,50);
-       
-       
-       
+        Lintu = new PhysicsObject(50, 50);
+
+
+
         Lintu.Position = Camera.Position;
         Lintu.Image = Lintu2;
         Add(Lintu);
-    
-    }
 
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    }   
     
     
     
     void LisaaNappaimet()
     {
+        
         Keyboard.Listen(Key.F1, ButtonState.Pressed, ShowControlHelp, "Näytä ohjeet");
         Keyboard.Listen(Key.Escape, ButtonState.Pressed, ConfirmExit, "lolo");
-
+        //Keyboard.Listen(Key.Space, ButtonState.Pressed, Jump, "hyppasi");
+        
         //Keyboard.Listen(Key.Left, ButtonState.Down, Liikuta, "Liikkuu vasemmalle", Saku, -nopeus);
         //Keyboard.Listen(Key.Right, ButtonState.Down, Liikuta, "Liikkuu vasemmalle", Saku, nopeus);
         //Keyboard.Listen(Key.Up, ButtonState.Pressed, Hyppaa, "Pelaaja hyppää", Saku, hyppyNopeus);
