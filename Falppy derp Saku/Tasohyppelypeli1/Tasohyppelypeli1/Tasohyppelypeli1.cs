@@ -13,15 +13,17 @@ public class Tasohyppelypeli1 : PhysicsGame
     Image Kentta;
     PhysicsObject Lintu;
     Image Lintu2 = LoadImage("Saku");
-    
-   
 
+
+    
     public override void Begin()
     {
         LisaaNappaimet();
         LuoKenttaHa();
         LuoLintu();
-    }
+        liikutapelaajaa();  
+     }
+
 
 
     void LuoLintu()
@@ -43,7 +45,8 @@ public class Tasohyppelypeli1 : PhysicsGame
         
         Keyboard.Listen(Key.F1, ButtonState.Pressed, ShowControlHelp, "Näytä ohjeet");
         Keyboard.Listen(Key.Escape, ButtonState.Pressed, ConfirmExit, "lolo");
-        //Keyboard.Listen(Key.Space, ButtonState.Pressed, Jump, "hyppasi");
+        Keyboard.Listen(Key.Space, ButtonState.Down, liikutapelaajaa, null, new Vector(-1000, 0));
+
         
         //Keyboard.Listen(Key.Left, ButtonState.Down, Liikuta, "Liikkuu vasemmalle", Saku, -nopeus);
         //Keyboard.Listen(Key.Right, ButtonState.Down, Liikuta, "Liikkuu vasemmalle", Saku, nopeus);
@@ -73,4 +76,30 @@ public class Tasohyppelypeli1 : PhysicsGame
         
      }
 
-}    
+    void liikkuvatausta()
+    {
+        Image Kentta = LoadImage("Kentta");
+     GameObject liikkuvatausta = new GameObject
+        (Kentta.Width * 10, Kentta.Height);
+
+        liikkuvatausta.Image = Kentta;
+
+        liikkuvatausta.TextureWrapSize = new Vector(10.0, 1.0); //10kertaa kuvan levyinen
+
+        Add(liikkuvatausta, -3);
+
+        Layers[-3].RelativeTransition = new Vector(1.5,1.1); // vaihda näitä lukuja jotta tausta liikku eri vauhdilla
+
+
+    
+    }
+    void liikutapelaajaa()
+    {
+    
+    
+    }
+    
+    } 
+
+
+   
