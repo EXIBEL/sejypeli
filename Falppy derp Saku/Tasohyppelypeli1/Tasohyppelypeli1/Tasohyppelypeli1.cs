@@ -45,10 +45,9 @@ public class Tasohyppelypeli1 : PhysicsGame
         
         Keyboard.Listen(Key.F1, ButtonState.Pressed, ShowControlHelp, "Näytä ohjeet");
         Keyboard.Listen(Key.Escape, ButtonState.Pressed, ConfirmExit, "lolo");
-        Keyboard.Listen(Key.Space, ButtonState.Down, liikutapelaajaa, null, new Vector(-1000, 0));
+        //Keyboard.Listen(Key.Space, ButtonState.Down, liikutapelaajaa, null, new Vector(-1000, 0));
 
         
-        //Keyboard.Listen(Key.Left, ButtonState.Down, Liikuta, "Liikkuu vasemmalle", Saku, -nopeus);
         //Keyboard.Listen(Key.Right, ButtonState.Down, Liikuta, "Liikkuu vasemmalle", Saku, nopeus);
         //Keyboard.Listen(Key.Up, ButtonState.Pressed, Hyppaa, "Pelaaja hyppää", Saku, hyppyNopeus);
 
@@ -91,7 +90,61 @@ public class Tasohyppelypeli1 : PhysicsGame
         Layers[-3].RelativeTransition = new Vector(1.5,1.1); // vaihda näitä lukuja jotta tausta liikku eri vauhdilla
 
 
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
     void liikutapelaajaa()
     {
