@@ -22,6 +22,7 @@ public class Tasohyppelypeli1 : PhysicsGame
         LisaaNappaimet();
         LuoKenttaHa();
         LuoLintu();
+        liikkuvatausta();
         //liikutapelaajaa();  
     }
 
@@ -70,27 +71,26 @@ public class Tasohyppelypeli1 : PhysicsGame
     }
     void LuoKenttaHa()
     {
-        Kentta = LoadImage("Kentta");
-        Level.Background.Image = Kentta;
         Camera.Zoom(1.70);
-
     }
 
-    /*void liikkuvatausta()
+   void liikkuvatausta()
     {
-        Image Kentta = LoadImage("Kentta");
-        GameObject liikkuvatausta = new GameObject
-           (Kentta.Width * 10, Kentta.Height);
+        
+       Image bgImg = LoadImage("kentta");
 
-        liikkuvatausta.Image = Kentta;
+        GameObject liikkuvaTausta = new GameObject(bgImg.Width * 10, bgImg.Height);
 
-        liikkuvatausta.TextureWrapSize = new Vector(10.0, 1.0); //10kertaa kuvan levyinen
+        liikkuvaTausta.Image = bgImg;
 
-        Add(liikkuvatausta, -3);
-
-        Layers[-3].RelativeTransition = new Vector(1.5, 1.1); // vaihda näitä lukuja jotta tausta liikku eri vauhdilla
-
-    }*/
+        liikkuvaTausta.TextureWrapSize = new Vector(10.0, 1.0); // 10 kertaa kuvan levyinen
+       
+        
+        Add(liikkuvaTausta, -3);
+        
+        liikkuvaTausta.MoveTo(new Vector(-Screen.Width, 0), 100);
+       
+    }
 
 
     void lintuhyppaaa()
