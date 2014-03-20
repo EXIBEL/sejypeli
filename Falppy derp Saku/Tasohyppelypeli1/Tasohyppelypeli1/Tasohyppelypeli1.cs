@@ -13,6 +13,7 @@ public class Tasohyppelypeli1 : PhysicsGame
     Image Kentta;
     PhysicsObject Lintu;
     Image Lintu2 = LoadImage("Saku");
+    PhysicsObject maa; 
 
 
 
@@ -22,11 +23,46 @@ public class Tasohyppelypeli1 : PhysicsGame
         LisaaNappaimet();
         LuoKenttaHa();
         LuoLintu();
+        
         liikkuvatausta();
-        //liikutapelaajaa();  
+
+        maa = Level.CreateBottomBorder();
+        LuoPutket();
     }
 
 
+    void LuoPutket()
+    {
+        // Jotta putket ei törmäile maahan
+        maa.CollisionIgnoreGroup = 1;
+
+        double ht = Screen.Height;
+        for (int i = 1; i < 10; i++)
+        {
+            double y = RandomGen.NextDouble(-ht / 5, ht / 5);
+            LuoPutki(250 * i, y + 0 + ht / 2);
+            LuoPutki(250 * i, y - 200 - ht / 2);
+        }
+    }
+    void LuoPutki(double x, double y)
+    {
+        double ht = Screen.Height;
+
+        PhysicsObject putki = new PhysicsObject(10, ht);
+
+        // Painovoima ei vaikuta
+        putki.IgnoresPhysicsLogics = true;
+        putki.CanRotate = false;
+        // Ei törmäile maahan
+        putki.CollisionIgnoreGroup = 1;
+
+        putki.Position = new Vector(x, y);
+        Add(putki);
+
+        // Pistä putket tulemaan lintua kohti
+        Vector movePos = new Vector(-ht, y);
+        putki.MoveTo(movePos, 100);
+    }
    
 
     void LuoLintu()
