@@ -19,6 +19,10 @@ public class Tasohyppelypeli1 : PhysicsGame
 
     public override void Begin()
     {
+
+        
+
+        IntMeter PisteLaskuri;  
         Gravity = new Vector( 0.0, -200.0 );
         LisaaNappaimet();
         LuoKenttaHa();
@@ -72,6 +76,7 @@ public class Tasohyppelypeli1 : PhysicsGame
 
         Lintu.Position = Camera.Position;
         Lintu.Image = Lintu2;
+        Lintu.CanRotate = false;
         Add(Lintu);
 
     }
@@ -112,8 +117,7 @@ public class Tasohyppelypeli1 : PhysicsGame
 
    void liikkuvatausta()
     {
-        
-       Image bgImg = LoadImage("kentta");
+        Image bgImg = LoadImage("kenttatausta v1");
 
         GameObject liikkuvaTausta = new GameObject(bgImg.Width * 10, bgImg.Height);
 
@@ -122,6 +126,7 @@ public class Tasohyppelypeli1 : PhysicsGame
         liikkuvaTausta.TextureWrapSize = new Vector(10.0, 1.0); // 10 kertaa kuvan levyinen
        
         
+
         Add(liikkuvaTausta, -3);
         
         liikkuvaTausta.MoveTo(new Vector(-Screen.Width, 0), 100);
@@ -131,14 +136,46 @@ public class Tasohyppelypeli1 : PhysicsGame
 
     void lintuhyppaaa()
     {
-        Lintu.Hit(new Vector(50, 500));
+        Lintu.Hit(new Vector(30
+            , 500));
 
 
 
     }
+    
+    
+    
+    /*'
+    
+  void LuoPistelaskuri()
+    {
+         PisteLaskuri = new IntMeter(0);
+
+        Label pisteNaytto = new Label();
+        pisteNaytto.X = Screen.Left + 100;
+        pisteNaytto.Y = Screen.Top - 100;
+        pisteNaytto.TextColor = Color.Black;
+        pisteNaytto.Color = Color.White;
+
+        pisteNaytto.BindTo(pisteLaskuri);
+        Add(pisteNaytto);
+    }
+*/
+
+    void PisteSeina()
+    {
+         
+     
+    }
 
 
-}
+    
+    
+    
+    }
+
+
+
  
 
 
