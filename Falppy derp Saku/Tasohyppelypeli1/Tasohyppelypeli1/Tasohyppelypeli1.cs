@@ -54,12 +54,20 @@ public class Tasohyppelypeli1 : PhysicsGame
 
         PhysicsObject putki = new PhysicsObject(50, ht);
         putki.Image = putkenkuva;
-        PhysicsObject putkenpaa = new PhysicsObject(70, 30);
-        putkenpaa.IgnoresCollisionResponse = true;
-        putkenpaa.IgnoresGravity = true;
-        putkenpaa.Image = putkenpaakuva;
-        putkenpaa.Y = putki.Height / 2;
-        putki.Add(putkenpaa);
+
+        PhysicsObject putkenpaaAla = new PhysicsObject(70, 30);
+        putkenpaaAla.IgnoresCollisionResponse = true;
+        putkenpaaAla.IgnoresGravity = true;
+        putkenpaaAla.Image = putkenpaakuva;
+        putkenpaaAla.Y = putki.Height / 2;
+        putki.Add(putkenpaaAla);
+
+        PhysicsObject putkenpaaYla = new PhysicsObject(70, 30);
+        putkenpaaYla.IgnoresCollisionResponse = true;
+        putkenpaaYla.IgnoresGravity = true;
+        putkenpaaYla.Image = putkenpaakuva;
+        putkenpaaYla.Y = - putki.Height / 2;
+        putki.Add(putkenpaaYla);
 
 
         // Painovoima ei vaikuta
