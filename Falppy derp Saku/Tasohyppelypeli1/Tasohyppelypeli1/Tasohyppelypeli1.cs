@@ -10,10 +10,11 @@ public class Tasohyppelypeli1 : PhysicsGame
 {
     const double nopeus = 200;
     const double hyppyNopeus = 750;
-    Image Kentta;
     PhysicsObject Lintu;
     Image Lintu2 = LoadImage("Saku");
-    PhysicsObject maa; 
+    PhysicsObject maa;
+    Image putkenkuva = LoadImage("putki");
+    Image putkenpaakuva = LoadImage("putkenpaa");
 
 
 
@@ -52,7 +53,15 @@ public class Tasohyppelypeli1 : PhysicsGame
     {
         double ht = Screen.Height;
 
-        PhysicsObject putki = new PhysicsObject(10, ht);
+        PhysicsObject putki = new PhysicsObject(50, ht);
+        putki.Image = putkenkuva;
+        PhysicsObject putkenpaa = new PhysicsObject(70, 30);
+        putkenpaa.IgnoresCollisionResponse = true;
+        putkenpaa.IgnoresGravity = true;
+        putkenpaa.Image = putkenpaakuva;
+        putkenpaa.Y = putki.Height / 2;
+        putki.Add(putkenpaa);
+
 
         // Painovoima ei vaikuta
         putki.IgnoresPhysicsLogics = true;
@@ -75,6 +84,8 @@ public class Tasohyppelypeli1 : PhysicsGame
 
 
         Lintu.Position = Camera.Position;
+        AddCollisionHandler(Lintu, LintuTormaa); 
+
         Lintu.Image = Lintu2;
         Lintu.CanRotate = false;
         Add(Lintu);
@@ -117,8 +128,7 @@ public class Tasohyppelypeli1 : PhysicsGame
 
    void liikkuvatausta()
     {
-        Image bgImg = LoadImage("kenttatausta v1");
-
+       Image bgImg = LoadImage("kenttatausta v1");
         GameObject liikkuvaTausta = new GameObject(bgImg.Width * 10, bgImg.Height);
 
         liikkuvaTausta.Image = bgImg;
@@ -136,8 +146,7 @@ public class Tasohyppelypeli1 : PhysicsGame
 
     void lintuhyppaaa()
     {
-        Lintu.Hit(new Vector(30
-            , 500));
+        Lintu.Hit(new Vector(30, 500));
 
 
 
@@ -168,56 +177,17 @@ public class Tasohyppelypeli1 : PhysicsGame
      
     }
 
+    void LintuTormaa(PhysicsObject kukaTormaa, PhysicsObject mihinTormaa)
+    {
+
+
+    }
+
 
     
     
     
     }
-
-
-
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
