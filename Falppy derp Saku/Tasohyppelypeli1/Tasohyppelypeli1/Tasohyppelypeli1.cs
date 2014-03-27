@@ -15,16 +15,15 @@ public class Tasohyppelypeli1 : PhysicsGame
     PhysicsObject maa;
     Image putkenkuva = LoadImage("putki");
     Image putkenpaakuva = LoadImage("putkenpaa");
-
-
-
+    IntMeter PisteLaskuri;
+  
     public override void Begin()
     {
 
-        
 
-        IntMeter PisteLaskuri;  
-        Gravity = new Vector( 0.0, -200.0 );
+
+        LuoPistelaskuri();
+        Gravity = new Vector(0.0, -200.0);
         LisaaNappaimet();
         LuoKenttaHa();
         LuoLintu();
@@ -76,15 +75,15 @@ public class Tasohyppelypeli1 : PhysicsGame
         Vector movePos = new Vector(-ht, y);
         putki.MoveTo(movePos, 100);
     }
-   
+
 
     void LuoLintu()
     {
         Lintu = new PhysicsObject(50, 50);
+       
 
-
-        Lintu.Position = Camera.Position;
-        AddCollisionHandler(Lintu, LintuTormaa); 
+        Lintu.Position = Camera.Position; 
+        AddCollisionHandler(Lintu, LintuTormaa);
 
         Lintu.Image = Lintu2;
         Lintu.CanRotate = false;
@@ -126,21 +125,21 @@ public class Tasohyppelypeli1 : PhysicsGame
         Camera.Zoom(1.70);
     }
 
-   void liikkuvatausta()
+    void liikkuvatausta()
     {
-       Image bgImg = LoadImage("kenttatausta v1");
+        Image bgImg = LoadImage("kenttatausta v1");
         GameObject liikkuvaTausta = new GameObject(bgImg.Width * 10, bgImg.Height);
 
         liikkuvaTausta.Image = bgImg;
 
         liikkuvaTausta.TextureWrapSize = new Vector(10.0, 1.0); // 10 kertaa kuvan levyinen
-       
-        
+
+
 
         Add(liikkuvaTausta, -3);
-        
+
         liikkuvaTausta.MoveTo(new Vector(-Screen.Width, 0), 100);
-       
+
     }
 
 
@@ -151,14 +150,14 @@ public class Tasohyppelypeli1 : PhysicsGame
 
 
     }
-    
-    
-    
-    /*'
-    
-  void LuoPistelaskuri()
+
+
+
+
+
+    void LuoPistelaskuri()
     {
-         PisteLaskuri = new IntMeter(0);
+        PisteLaskuri = new IntMeter(0);
 
         Label pisteNaytto = new Label();
         pisteNaytto.X = Screen.Left + 100;
@@ -166,15 +165,16 @@ public class Tasohyppelypeli1 : PhysicsGame
         pisteNaytto.TextColor = Color.Black;
         pisteNaytto.Color = Color.White;
 
-        pisteNaytto.BindTo(pisteLaskuri);
+        pisteNaytto.BindTo(PisteLaskuri);
         Add(pisteNaytto);
     }
-*/
 
-    void PisteSeina()
+
+    void PisteSeina(double x,double y )
     {
-         
-     
+        PhysicsObject pisteseina = new PhysicsObject(50, 70);
+        
+       
     }
 
     void LintuTormaa(PhysicsObject kukaTormaa, PhysicsObject mihinTormaa)
@@ -184,10 +184,10 @@ public class Tasohyppelypeli1 : PhysicsGame
     }
 
 
-    
-    
-    
-    }
+
+
+
+}
 
 
 
