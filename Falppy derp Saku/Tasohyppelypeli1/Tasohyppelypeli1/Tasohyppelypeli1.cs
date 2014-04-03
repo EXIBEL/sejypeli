@@ -91,7 +91,8 @@ public class Tasohyppelypeli1 : PhysicsGame
        
 
         Lintu.Position = Camera.Position; 
-        AddCollisionHandler(Lintu, LintuTormaa);
+        AddCollisionHandler(Lintu, LintuTormaa); 
+ 
 
         Lintu.Image = Lintu2;
         Lintu.CanRotate = false;
@@ -188,7 +189,7 @@ public class Tasohyppelypeli1 : PhysicsGame
 
     void LintuTormaa(PhysicsObject kukaTormaa, PhysicsObject mihinTormaa)
     {
-
+        Lintu.Destroy();
 
 
         Exit();
