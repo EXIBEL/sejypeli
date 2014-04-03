@@ -14,7 +14,8 @@ public class Tasohyppelypeli1 : PhysicsGame
     Image Lintu2 = LoadImage("Saku");
     PhysicsObject maa;
     Image putkenkuva = LoadImage("putki");
-    Image putkenpaakuva = LoadImage("putkenpaa");
+    Image putkenpaakuva = LoadImage("putkenpaa"); 
+    SoundEffect aani = LoadSoundEffect("aani");
     IntMeter PisteLaskuri;
   
     public override void Begin()
@@ -190,9 +191,9 @@ public class Tasohyppelypeli1 : PhysicsGame
     void LintuTormaa(PhysicsObject kukaTormaa, PhysicsObject mihinTormaa)
     {
         Lintu.Destroy();
+        aani.Play();
 
-
-        Exit();
+        
 
     }
 
