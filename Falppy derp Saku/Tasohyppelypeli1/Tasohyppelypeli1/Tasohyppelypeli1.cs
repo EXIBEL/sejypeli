@@ -109,7 +109,7 @@ public class Tasohyppelypeli1 : PhysicsGame
         Keyboard.Listen(Key.F1, ButtonState.Pressed, ShowControlHelp, "Näytä ohjeet");
         Keyboard.Listen(Key.Escape, ButtonState.Pressed, ConfirmExit, "lolo");
         Keyboard.Listen(Key.Space, ButtonState.Pressed, lintuhyppaaa, "asd");
-
+        Keyboard.Listen(Key.R, ButtonState.Pressed, restart, "moro");
 
 
         //Keyboard.Listen(Key.Right, ButtonState.Down, Liikuta, "Liikkuu vasemmalle", Saku, nopeus);
@@ -184,21 +184,23 @@ public class Tasohyppelypeli1 : PhysicsGame
     void PisteSeina(double x,double y )
     {
         PhysicsObject pisteseina = new PhysicsObject(50, 70);
-        
+       
        
     }
 
     void LintuTormaa(PhysicsObject kukaTormaa, PhysicsObject mihinTormaa)
     {
         Lintu.Destroy();
+        MessageDisplay.Add("You Failed, Press R to try again");
         aani.Play();
-
-        
-
     }
 
 
-
+    public void restart()
+    {
+        ClearAll();
+        Begin();
+    }
 
 
 }
