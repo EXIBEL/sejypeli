@@ -109,6 +109,7 @@ public class Tasohyppelypeli1 : PhysicsGame
         Keyboard.Listen(Key.Space, ButtonState.Pressed, lintuhyppaaa, "asd");
 
 
+
         //Keyboard.Listen(Key.Right, ButtonState.Down, Liikuta, "Liikkuu vasemmalle", Saku, nopeus);
         //Keyboard.Listen(Key.Up, ButtonState.Pressed, Hyppaa, "Pelaaja hyppää", Saku, hyppyNopeus);
 
@@ -188,6 +189,9 @@ public class Tasohyppelypeli1 : PhysicsGame
     void LintuTormaa(PhysicsObject kukaTormaa, PhysicsObject mihinTormaa)
     {
 
+
+
+        Exit();
 
     }
 
