@@ -16,20 +16,22 @@ public class Tasohyppelypeli1 : PhysicsGame
     Image putkenkuva = LoadImage("putki");
     Image putkenpaakuva = LoadImage("putkenpaa"); 
     SoundEffect aani = LoadSoundEffect("aani");
-    IntMeter PisteLaskuri;
+    IntMeter PisteLaskuri; 
+    
   
     public override void Begin()
     {
 
 
-
+         
         LuoPistelaskuri();
         Gravity = new Vector(0.0, -200.0);
-        LisaaNappaimet();
+        LisaaNappaimet(); 
+        
         LuoKenttaHa();
         LuoLintu();
         
-        liikkuvatausta();
+        liikkuvatausta(); 
 
         maa = Level.CreateBottomBorder();
         LuoPutket();
@@ -140,6 +142,7 @@ public class Tasohyppelypeli1 : PhysicsGame
     {
         Image bgImg = LoadImage("kenttatausta v1");
         GameObject liikkuvaTausta = new GameObject(bgImg.Width * 10, bgImg.Height);
+        Level.BackgroundColor = Color.Aqua;
 
         liikkuvaTausta.Image = bgImg;
 
@@ -150,13 +153,14 @@ public class Tasohyppelypeli1 : PhysicsGame
         Add(liikkuvaTausta, -3);
 
         liikkuvaTausta.MoveTo(new Vector(-Screen.Width, 0), 100);
+       
 
     }
 
 
     void lintuhyppaaa()
     {
-        Lintu.Hit(new Vector(30, 500));
+        Lintu.Hit(new Vector(0, 250));
 
 
 
