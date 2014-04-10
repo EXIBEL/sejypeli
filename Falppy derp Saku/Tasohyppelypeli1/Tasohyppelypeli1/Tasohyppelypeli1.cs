@@ -16,23 +16,23 @@ public class Tasohyppelypeli1 : PhysicsGame
     Image putkenkuva = LoadImage("putki");
     Image putkenpaakuva = LoadImage("putkenpaa");
     SoundEffect aani = LoadSoundEffect("aani");
-    IntMeter PisteLaskuri; 
-    
+    IntMeter PisteLaskuri;
+
 
     public override void Begin()
     {
 
 
-         
+
 
         LuoPistelaskuri();
         Gravity = new Vector(0.0, -200.0);
-        LisaaNappaimet(); 
-        
+        LisaaNappaimet();
+
         LuoKenttaHa();
         LuoLintu();
 
-        liikkuvatausta(); 
+        liikkuvatausta();
 
         maa = Level.CreateBottomBorder();
         LuoPutket();
@@ -80,11 +80,11 @@ public class Tasohyppelypeli1 : PhysicsGame
         PhysicsObject pisteseina = new PhysicsObject(10, 200);
         pisteseina.IgnoresGravity = true;
         pisteseina.IgnoresCollisionResponse = true;
-        pisteseina.Position = new Vector(x, y + putki.Height/2 + pisteseina.Height/2);
+        pisteseina.Position = new Vector(x, y + putki.Height / 2 + pisteseina.Height / 2);
         pisteseina.IsVisible = false;
         pisteseina.CollisionIgnoreGroup = 1;
         Add(pisteseina);
-        
+
         // Painovoima ei vaikuta
         putki.IgnoresPhysicsLogics = true;
         putki.CanRotate = false;
@@ -100,7 +100,7 @@ public class Tasohyppelypeli1 : PhysicsGame
         // Pistä putket tulemaan lintua kohti
         Vector movePos = new Vector(-ht, y);
         putki.MoveTo(movePos, 100);
-        Vector movePosPiste = new Vector(-ht,  pisteseina.Y);
+        Vector movePosPiste = new Vector(-ht, pisteseina.Y);
         pisteseina.MoveTo(movePosPiste, 100);
     }
 
@@ -129,6 +129,8 @@ public class Tasohyppelypeli1 : PhysicsGame
         Keyboard.Listen(Key.Escape, ButtonState.Pressed, ConfirmExit, "lolo");
         Keyboard.Listen(Key.Space, ButtonState.Pressed, lintuhyppaaa, "asd");
         Keyboard.Listen(Key.R, ButtonState.Pressed, restart, "moro");
+        Keyboard.Listen(Key.S, ButtonState.Pressed, Sammuta, "sammutta");
+
 
 
         //Keyboard.Listen(Key.Right, ButtonState.Down, Liikuta, "Liikkuu vasemmalle", Saku, nopeus);
@@ -159,7 +161,7 @@ public class Tasohyppelypeli1 : PhysicsGame
     {
         Image bgImg = LoadImage("kenttatausta v1");
         GameObject liikkuvaTausta = new GameObject(bgImg.Width * 10, bgImg.Height);
-        Level.BackgroundColor = Color.Aqua;
+
 
         liikkuvaTausta.Image = bgImg;
 
@@ -170,7 +172,7 @@ public class Tasohyppelypeli1 : PhysicsGame
         Add(liikkuvaTausta, -3);
 
         liikkuvaTausta.MoveTo(new Vector(-Screen.Width, 0), 100);
-       
+
 
     }
 
@@ -178,7 +180,7 @@ public class Tasohyppelypeli1 : PhysicsGame
     void lintuhyppaaa()
     {
 
-         Lintu.Hit(new Vector(0, 450));
+        Lintu.Hit(new Vector(0, 450));
 
     }
 
@@ -213,6 +215,7 @@ public class Tasohyppelypeli1 : PhysicsGame
     void LintuTormaa(PhysicsObject kukaTormaa, PhysicsObject mihinTormaa)
     {
         Lintu.Destroy();
+        MessageDisplay.Add("You Failed, Press S to Quit");
         MessageDisplay.Add("You Failed, Press R to try again");
         aani.Play();
     }
@@ -223,20 +226,20 @@ public class Tasohyppelypeli1 : PhysicsGame
         ClearAll();
         Begin();
     }
+
+    void Sammuta()
+    {
+        Exit();
+    }
+
+
     public void Pelaajallepiste(PhysicsObject Tormaaja, PhysicsObject kohde)
     {
         PisteLaskuri.Value = +1;
     }
 
 
+
 }
-    
-
-
-
-
-
-
-
 
 
