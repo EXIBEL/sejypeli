@@ -14,23 +14,24 @@ public class Tasohyppelypeli1 : PhysicsGame
     Image Lintu2 = LoadImage("Saku");
     PhysicsObject maa;
     Image putkenkuva = LoadImage("putki");
-    Image putkenpaakuva = LoadImage("putkenpaa"); 
+    Image putkenpaakuva = LoadImage("putkenpaa");
     SoundEffect aani = LoadSoundEffect("aani");
     IntMeter PisteLaskuri; 
     
-  
+
     public override void Begin()
     {
 
 
          
+
         LuoPistelaskuri();
         Gravity = new Vector(0.0, -200.0);
         LisaaNappaimet(); 
         
         LuoKenttaHa();
         LuoLintu();
-        
+
         liikkuvatausta(); 
 
         maa = Level.CreateBottomBorder();
@@ -48,6 +49,7 @@ public class Tasohyppelypeli1 : PhysicsGame
         {
             double y = RandomGen.NextDouble(-ht / 5, ht / 5);
             LuoPutki(250 * i, y + 0 + ht / 2);
+            //PisteSeina(250 * i, y - 100 );
             LuoPutki(250 * i, y - 200 - ht / 2);
         }
     }
@@ -56,6 +58,7 @@ public class Tasohyppelypeli1 : PhysicsGame
         double ht = Screen.Height;
 
         PhysicsObject putki = new PhysicsObject(50, ht);
+        putki.Tag = "putki";
         putki.Image = putkenkuva;
 
         PhysicsObject putkenpaaAla = new PhysicsObject(70, 30);
@@ -63,39 +66,53 @@ public class Tasohyppelypeli1 : PhysicsGame
         putkenpaaAla.IgnoresGravity = true;
         putkenpaaAla.Image = putkenpaakuva;
         putkenpaaAla.Y = putki.Height / 2;
+        putkenpaaAla.Tag = "putki";
         putki.Add(putkenpaaAla);
 
         PhysicsObject putkenpaaYla = new PhysicsObject(70, 30);
         putkenpaaYla.IgnoresCollisionResponse = true;
         putkenpaaYla.IgnoresGravity = true;
         putkenpaaYla.Image = putkenpaakuva;
-        putkenpaaYla.Y = - putki.Height / 2;
+        putkenpaaYla.Y = -putki.Height / 2;
+        putkenpaaYla.Tag = "putki";
         putki.Add(putkenpaaYla);
 
-
+        PhysicsObject pisteseina = new PhysicsObject(10, 200);
+        pisteseina.IgnoresGravity = true;
+        pisteseina.IgnoresCollisionResponse = true;
+        pisteseina.Position = new Vector(x, y + putki.Height/2 + pisteseina.Height/2);
+        pisteseina.IsVisible = false;
+        pisteseina.CollisionIgnoreGroup = 1;
+        Add(pisteseina);
+        
         // Painovoima ei vaikuta
         putki.IgnoresPhysicsLogics = true;
         putki.CanRotate = false;
         // Ei törmäile maahan
         putki.CollisionIgnoreGroup = 1;
-
+        putkenpaaAla.CollisionIgnoreGroup = 1;
+        putkenpaaYla.CollisionIgnoreGroup = 1;
         putki.Position = new Vector(x, y);
         Add(putki);
+
+        AddCollisionHandler(Lintu, pisteseina, Pelaajallepiste);
 
         // Pistä putket tulemaan lintua kohti
         Vector movePos = new Vector(-ht, y);
         putki.MoveTo(movePos, 100);
+        Vector movePosPiste = new Vector(-ht,  pisteseina.Y);
+        pisteseina.MoveTo(movePosPiste, 100);
     }
 
 
     void LuoLintu()
     {
         Lintu = new PhysicsObject(50, 50);
-       
 
-        Lintu.Position = Camera.Position; 
-        AddCollisionHandler(Lintu, LintuTormaa); 
- 
+
+        Lintu.Position = Camera.Position;
+        AddCollisionHandler(Lintu, "putki", LintuTormaa);
+
 
         Lintu.Image = Lintu2;
         Lintu.CanRotate = false;
@@ -160,14 +177,10 @@ public class Tasohyppelypeli1 : PhysicsGame
 
     void lintuhyppaaa()
     {
-        Lintu.Hit(new Vector(0, 250));
 
-
+         Lintu.Hit(new Vector(0, 450));
 
     }
-
-
-
 
 
     void LuoPistelaskuri()
@@ -185,12 +198,17 @@ public class Tasohyppelypeli1 : PhysicsGame
     }
 
 
-    void PisteSeina(double x,double y )
+    /*void PisteSeina(double x, double y)
     {
-        PhysicsObject pisteseina = new PhysicsObject(50, 70);
-       
-       
-    }
+       PhysicsObject pisteseina = PhysicsObject.CreateStaticObject(10, 200);
+        pisteseina.IgnoresCollisionResponse = true;
+        pisteseina.Position = new Vector(x, y);
+        //pisteseina.IsVisible = false;
+        double ht = Screen.Height;
+        pisteseina.CollisionIgnoreGroup = 1;
+        Add(pisteseina);
+        AddCollisionHandler(Lintu, pisteseina, Pelaajallepiste);
+    }*/
 
     void LintuTormaa(PhysicsObject kukaTormaa, PhysicsObject mihinTormaa)
     {
@@ -205,10 +223,14 @@ public class Tasohyppelypeli1 : PhysicsGame
         ClearAll();
         Begin();
     }
+    public void Pelaajallepiste(PhysicsObject Tormaaja, PhysicsObject kohde)
+    {
+        PisteLaskuri.Value = +1;
+    }
 
 
 }
-
+    
 
 
 
